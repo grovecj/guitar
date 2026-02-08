@@ -1,26 +1,32 @@
 @import 'tailwindcss';
 
 @theme {
-	/* Background */
-	--color-bg-primary: #0f0f0f;
-	--color-bg-secondary: #1a1a1a;
-	--color-bg-surface: #242424;
-	--color-bg-elevated: #2e2e2e;
+	/* Background — deep warm blacks */
+	--color-bg-primary: #0a0a08;
+	--color-bg-secondary: #141410;
+	--color-bg-surface: #1c1c18;
+	--color-bg-elevated: #262620;
 
 	/* Text */
-	--color-text-primary: #f0f0f0;
-	--color-text-secondary: #a0a0a0;
-	--color-text-muted: #666666;
+	--color-text-primary: #ede8df;
+	--color-text-secondary: #9e9a90;
+	--color-text-muted: #5c5a54;
 
-	/* Accent */
-	--color-accent-green: #22c55e;
-	--color-accent-yellow: #eab308;
-	--color-accent-red: #ef4444;
-	--color-accent-blue: #3b82f6;
+	/* Accent — warm amber + functional colors */
+	--color-accent-amber: #d4a053;
+	--color-accent-amber-light: #e8c478;
+	--color-accent-green: #5cb870;
+	--color-accent-yellow: #d4a053;
+	--color-accent-red: #c75450;
+	--color-accent-blue: #5b8fd4;
 
 	/* Border */
-	--color-border-default: #333333;
-	--color-border-subtle: #2a2a2a;
+	--color-border-default: #2a2a24;
+	--color-border-subtle: #1e1e1a;
+
+	/* Fonts */
+	--font-display: 'DM Serif Display', Georgia, serif;
+	--font-body: 'Anybody', system-ui, sans-serif;
 }
 
 html {
@@ -29,9 +35,7 @@ html {
 }
 
 body {
-	font-family:
-		'Inter',
-		system-ui,
-		-apple-system,
-		sans-serif;
+	font-family: var(--font-body);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
