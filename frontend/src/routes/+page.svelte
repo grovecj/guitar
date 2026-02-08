@@ -21,7 +21,10 @@
 		style="background: radial-gradient(circle, #5b8fd4 0%, transparent 70%);"
 	></div>
 	<!-- Noise texture overlay -->
-	<div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,<svg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>');"></div>
+	<div
+		class="absolute inset-0 opacity-[0.03]"
+		style="background-image: url('data:image/svg+xml,<svg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>');"
+	></div>
 </div>
 
 <div class="relative flex min-h-screen flex-col">
@@ -35,7 +38,12 @@
 		<div class="flex items-center gap-2.5">
 			<!-- Tuning fork icon -->
 			<svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-accent-amber">
-				<path d="M12 2v8m0 4v8M8 2v6a4 4 0 0 0 8 0V2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+				<path
+					d="M12 2v8m0 4v8M8 2v6a4 4 0 0 0 8 0V2"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+				/>
 			</svg>
 			<span class="font-display text-lg tracking-wide text-text-primary">Guitar</span>
 		</div>
@@ -70,7 +78,9 @@
 			class="max-w-2xl text-center"
 			class:opacity-0={!mounted}
 			class:opacity-100={mounted}
-			style="transition: opacity 0.8s ease 0.15s; transform: translateY({mounted ? '0' : '12px'}); transition: opacity 0.8s ease 0.15s, transform 0.8s ease 0.15s;"
+			style="transition: opacity 0.8s ease 0.15s, transform 0.8s ease 0.15s; transform: translateY({mounted
+				? '0'
+				: '12px'});"
 		>
 			<p
 				class="mb-5 inline-block rounded-full border border-accent-amber/20 bg-accent-amber/5 px-4 py-1.5 text-xs font-medium tracking-widest uppercase text-accent-amber"
@@ -86,8 +96,8 @@
 			</h1>
 
 			<p class="mx-auto mb-10 max-w-lg text-base leading-relaxed text-text-secondary sm:text-lg">
-				A precision tuner, AI-generated backing tracks, and guided practice plans — everything
-				you need to build a real practice habit, in one place.
+				A precision tuner, AI-generated backing tracks, and guided practice plans — everything you
+				need to build a real practice habit, in one place.
 			</p>
 
 			<div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -120,7 +130,9 @@
 			class="mt-20 grid w-full max-w-4xl gap-4 sm:grid-cols-3"
 			class:opacity-0={!mounted}
 			class:opacity-100={mounted}
-			style="transition: opacity 0.8s ease 0.5s; transform: translateY({mounted ? '0' : '16px'}); transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s;"
+			style="transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s; transform: translateY({mounted
+				? '0'
+				: '16px'});"
 		>
 			<!-- Tuner -->
 			<div
@@ -206,8 +218,8 @@
 					</div>
 					<h3 class="font-display mb-2 text-xl text-text-primary">Guided Practice</h3>
 					<p class="text-sm leading-relaxed text-text-secondary">
-						Structured sessions with timers, a metronome, and plans that adapt to your skill
-						level and goals.
+						Structured sessions with timers, a metronome, and plans that adapt to your skill level
+						and goals.
 					</p>
 				</div>
 			</div>
