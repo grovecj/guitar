@@ -1,0 +1,14 @@
+# Copy this file to terraform.tfvars and fill in real values.
+# NEVER commit terraform.tfvars — it contains secrets.
+
+do_token             = "dop_v1_..."
+do_spaces_access_id  = "DO..."
+do_spaces_secret_key = "..."
+ssh_key_fingerprint  = "aa:bb:cc:..."
+
+# Optional overrides (defaults are fine for most cases)
+# region       = "nyc3"
+# domain       = "cartergrove.me"
+# subdomain    = "guitar"
+# droplet_size = "s-1vcpu-1gb"
+# db_size      = "db-s-1vcpu-1gb"

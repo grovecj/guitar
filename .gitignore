@@ -23,6 +23,7 @@ Thumbs.db
 
 # Go
 backend/tmp/
+*.exe
 
 # Terraform
 infra/.terraform/
