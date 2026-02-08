@@ -26,8 +26,8 @@ backend/tmp/
 *.exe
 
 # Terraform
-infra/.terraform/
-infra/*.tfstate
-infra/*.tfstate.backup
+**/.terraform/
+*.tfstate
+*.tfstate.backup
 infra/*.tfvars
 !infra/*.tfvars.example

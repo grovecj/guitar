@@ -17,9 +17,26 @@ Terraform configuration for the Guitar app on Digital Ocean.
 2. A [Spaces access key pair](https://cloud.digitalocean.com/account/api/spaces)
 3. An SSH key added to your DO account (note its fingerprint)
 4. The domain `cartergrove.me` added to DO DNS
-5. A Spaces bucket named `guitar-tfstate` created manually (for Terraform state)
 
 ## Setup
+
+### Step 1: Bootstrap the state bucket
+
+The main Terraform config stores its state in a DO Spaces bucket. A small
+bootstrap config creates that bucket using local state (one-time setup).
+
+```bash
+cd infra/bootstrap
+
+# Apply with your DO credentials
+terraform init
+terraform apply \
+  -var="do_token=dop_v1_..." \
+  -var="do_spaces_access_id=DO..." \
+  -var="do_spaces_secret_key=..."
+```
+
+### Step 2: Apply the main config
 
 ```bash
 cd infra
@@ -40,12 +57,9 @@ terraform apply
 
 ## State Backend
 
-Terraform state is stored remotely in the `guitar-tfstate` Spaces bucket.
-You must create this bucket manually before running `terraform init`:
-
-```bash
-doctl spaces create guitar-tfstate --region nyc3
-```
+Terraform state is stored remotely in the `guitar-tfstate` Spaces bucket
+(created by the bootstrap config). The bucket has versioning enabled so
+you can recover from accidental state corruption.
 
 ## Estimated Monthly Cost
 
