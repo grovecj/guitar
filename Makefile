@@ -1,4 +1,4 @@
-.PHONY: dev dev-frontend dev-backend build build-frontend build-backend clean
+.PHONY: dev dev-frontend dev-backend build build-frontend build-backend clean migrate migrate-down migrate-status
 
 # Development — run both frontend and backend concurrently
 dev:
@@ -21,3 +21,15 @@ build-backend:
 
 clean:
 	rm -rf dist frontend/build frontend/.svelte-kit/output
+
+# Database migrations (requires DATABASE_URL env var)
+MIGRATIONS_DIR = backend/internal/database/migrations
+
+migrate:
+	goose -dir $(MIGRATIONS_DIR) postgres "$(DATABASE_URL)" up
+
+migrate-down:
+	goose -dir $(MIGRATIONS_DIR) postgres "$(DATABASE_URL)" down
+
+migrate-status:
+	goose -dir $(MIGRATIONS_DIR) postgres "$(DATABASE_URL)" status
