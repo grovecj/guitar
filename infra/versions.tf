@@ -6,6 +6,10 @@ terraform {
       source  = "digitalocean/digitalocean"
       version = "~> 2.34"
     }
+    github = {
+      source  = "integrations/github"
+      version = "~> 6.0"
+    }
   }
 
   backend "s3" {
@@ -26,4 +30,9 @@ provider "digitalocean" {
   token             = var.do_token
   spaces_access_id  = var.do_spaces_access_id
   spaces_secret_key = var.do_spaces_secret_key
+}
+
+provider "github" {
+  token = var.github_token
+  owner = "grovecj"
 }

@@ -50,3 +50,16 @@ variable "ssh_key_fingerprint" {
   description = "Fingerprint of the SSH key to add to the Droplet"
   type        = string
 }
+
+# GitHub
+variable "github_token" {
+  description = "GitHub personal access token (needs repo, admin:org scopes)"
+  type        = string
+  sensitive   = true
+}
+
+variable "claude_api_key" {
+  description = "Anthropic Claude API key (stored as GitHub Actions secret)"
+  type        = string
+  sensitive   = true
+}

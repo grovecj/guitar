@@ -1,10 +1,17 @@
 # Copy this file to terraform.tfvars and fill in real values.
 # NEVER commit terraform.tfvars — it contains secrets.
 
+# Digital Ocean
 do_token             = "dop_v1_..."
 do_spaces_access_id  = "DO..."
 do_spaces_secret_key = "..."
 ssh_key_fingerprint  = "aa:bb:cc:..."
+
+# GitHub — personal access token with repo + admin:org scopes
+github_token = "ghp_..."
+
+# Claude API
+claude_api_key = "sk-ant-..."
 
 # Optional overrides (defaults are fine for most cases)
 # region       = "nyc3"
