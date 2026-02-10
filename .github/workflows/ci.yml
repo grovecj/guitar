@@ -24,6 +24,7 @@ jobs:
       - run: npm run lint
       - run: npm run format:check
       - run: npm run check
+      - run: npm test
 
   lint-backend:
     name: lint-backend
