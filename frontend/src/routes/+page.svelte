@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { resolve } from '$app/paths';
 	import { user, authLoading, logout } from '$lib/stores/auth';
 
 	let mounted = $state(false);
@@ -161,7 +162,8 @@
 				: '16px'});"
 		>
 			<!-- Tuner -->
-			<div
+			<a
+				href={resolve('/tuner')}
 				class="group relative overflow-hidden rounded-2xl border border-border-default bg-bg-surface/50 p-7 backdrop-blur-sm transition-all duration-300 hover:border-accent-green/30 hover:bg-bg-surface/80"
 			>
 				<div
@@ -187,7 +189,7 @@
 						string-by-string guidance.
 					</p>
 				</div>
-			</div>
+			</a>
 
 			<!-- Backing Tracks -->
 			<div
