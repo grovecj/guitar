@@ -61,7 +61,7 @@
 	aria-valuemin={-50}
 	aria-valuemax={50}
 	aria-label="Tuning gauge"
-	style="opacity: {gaugeOpacity}; transition: opacity 300ms ease;"
+	style="opacity: {gaugeOpacity}; transition: opacity {reducedMotion ? '0ms' : '300ms'} ease;"
 >
 	<!-- Green glow filter -->
 	<defs>
@@ -166,13 +166,20 @@
 			stroke-width="2"
 			opacity="0.5"
 		>
-			<animate
-				attributeName="r"
-				values="{NEEDLE_PIVOT_RADIUS + 4};{NEEDLE_PIVOT_RADIUS + 10};{NEEDLE_PIVOT_RADIUS + 4}"
-				dur="1.5s"
-				repeatCount="indefinite"
-			/>
-			<animate attributeName="opacity" values="0.5;0.15;0.5" dur="1.5s" repeatCount="indefinite" />
+			{#if !reducedMotion}
+				<animate
+					attributeName="r"
+					values="{NEEDLE_PIVOT_RADIUS + 4};{NEEDLE_PIVOT_RADIUS + 10};{NEEDLE_PIVOT_RADIUS + 4}"
+					dur="1.5s"
+					repeatCount="indefinite"
+				/>
+				<animate
+					attributeName="opacity"
+					values="0.5;0.15;0.5"
+					dur="1.5s"
+					repeatCount="indefinite"
+				/>
+			{/if}
 		</circle>
 	{/if}
 </svg>

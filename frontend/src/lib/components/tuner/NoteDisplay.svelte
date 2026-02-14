@@ -27,7 +27,7 @@
 
 	let srAnnouncement = $derived(
 		isDetecting && noteName
-			? `${noteName}${octave}, ${centsSign}${cents} cents`
+			? `${noteName}${octave ?? ''}, ${centsSign}${cents} cents`
 			: 'No note detected'
 	);
 </script>

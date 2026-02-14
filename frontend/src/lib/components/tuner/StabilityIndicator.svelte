@@ -2,9 +2,10 @@
 	interface Props {
 		stability: number;
 		isDetecting: boolean;
+		reducedMotion: boolean;
 	}
 
-	let { stability, isDetecting }: Props = $props();
+	let { stability, isDetecting, reducedMotion }: Props = $props();
 
 	let fillPercent = $derived(isDetecting ? Math.round(stability * 100) : 0);
 	let barColor = $derived(
@@ -22,6 +23,8 @@
 >
 	<div
 		class="h-full rounded-full {barColor}"
-		style="width: {fillPercent}%; transition: width 300ms ease, background-color 300ms ease;"
+		style="width: {fillPercent}%; transition: width {reducedMotion
+			? '0ms'
+			: '300ms'} ease, background-color {reducedMotion ? '0ms' : '300ms'} ease;"
 	></div>
 </div>

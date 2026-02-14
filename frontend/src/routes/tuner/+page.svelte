@@ -123,6 +123,7 @@
 					<StabilityIndicator
 						stability={$pitchDetectionResult.stability}
 						isDetecting={$pitchDetectionResult.isDetecting}
+						{reducedMotion}
 					/>
 				</div>
 
