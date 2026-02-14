@@ -111,7 +111,7 @@
 					{frequency.toFixed(1)} Hz
 				</span>
 			{:else}
-				<span class="text-xs text-text-muted">&nbsp;</span>
+				<span class="text-xs text-text-muted">-- Hz</span>
 			{/if}
 		</div>
 	{/if}
