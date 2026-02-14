@@ -14,9 +14,34 @@
 	import StabilityIndicator from '$lib/components/tuner/StabilityIndicator.svelte';
 	import CalibrationControl from '$lib/components/tuner/CalibrationControl.svelte';
 	import TunerStatus from '$lib/components/tuner/TunerStatus.svelte';
+	import TuningSelector from '$lib/components/tuner/TuningSelector.svelte';
+	import StringGuide from '$lib/components/tuner/StringGuide.svelte';
+	import { tunerMode, updateGuidedState } from '$lib/stores/tuner-mode';
 
 	let reducedMotion = $state(false);
 	let showFrequency = $state(false);
+
+	// Feed pitch data into guided mode store
+	$effect(() => {
+		const result = $pitchDetectionResult;
+		const mode = $tunerMode;
+		if (mode.mode === 'guided' && result.isDetecting) {
+			updateGuidedState({
+				note: result.note,
+				stability: result.stability,
+				isDetecting: result.isDetecting
+			});
+		}
+	});
+
+	// Derive guided mode context for the note display
+	let guidedContext = $derived.by(() => {
+		const mode = $tunerMode;
+		if (mode.mode !== 'guided' || mode.currentStringIndex === null) return null;
+		const note = mode.activeTuning.notes[mode.currentStringIndex];
+		const stringNumber = mode.activeTuning.notes.length - mode.currentStringIndex;
+		return { note, stringNumber };
+	});
 
 	onMount(() => {
 		const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -100,6 +125,9 @@
 			class="w-full max-w-lg overflow-hidden rounded-2xl border border-border-default bg-bg-surface/50 p-6 backdrop-blur-sm sm:p-8"
 		>
 			<div class="flex flex-col items-center gap-6">
+				<!-- Tuning selector -->
+				<TuningSelector />
+
 				<!-- Gauge -->
 				<TunerGauge
 					cents={$pitchDetectionResult.cents}
@@ -107,6 +135,14 @@
 					isDetecting={$pitchDetectionResult.isDetecting}
 					{reducedMotion}
 				/>
+
+				<!-- Guided mode target context -->
+				{#if guidedContext}
+					<p class="text-xs text-text-secondary">
+						String {guidedContext.stringNumber} — {guidedContext.note.name}{guidedContext.note
+							.octave}
+					</p>
+				{/if}
 
 				<!-- Note display -->
 				<NoteDisplay
@@ -126,6 +162,13 @@
 						{reducedMotion}
 					/>
 				</div>
+
+				<!-- String guide (guided mode only) -->
+				{#if $tunerMode.mode === 'guided'}
+					<div class="w-full">
+						<StringGuide {reducedMotion} />
+					</div>
+				{/if}
 
 				<!-- Start/Stop + errors -->
 				<TunerStatus
